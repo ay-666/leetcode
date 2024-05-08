@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& score) {
+        int n = score.size();
+        vector<int>sc= score;
+        vector<string>ans;
+        sort(sc.begin(),sc.end(),greater<int>());
+        unordered_map<int,string>value;
+        for(int i=0;i<n;i++){
+            if(i==0)value[sc[i]] = "Gold Medal";
+            else if(i==1)value[sc[i]] = "Silver Medal";
+            else if(i==2)value[sc[i]] = "Bronze Medal";
+            else value[sc[i]] = to_string(i+1);
+        }
+        for(auto &s :score){
+            ans.push_back(value[s]);
+        }
+        return ans;
+
+
+    }
+};
